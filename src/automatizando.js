@@ -24,7 +24,7 @@ const postAlvo = require('./alvo');
   //  Inicia o puppeteer
   const browser = await puppeteer.launch({
     // Escolhe qual navegador sera aberto
-    executablePath: 'C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe',
+    // executablePath: 'C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe',
     // Deixa o navegado visível
     headless: false
   });
