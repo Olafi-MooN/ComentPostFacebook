@@ -7,8 +7,6 @@ var text = [];
 (async () => {
 	const response = await fetch('https://type.fit/api/quotes');
   const json = await response.json();
-
-  console.log(json);
   return text = json;
     
 })();
@@ -24,6 +22,8 @@ setTimeout(() => {
 
 
 async function automatiza() {
+  var sorteioLogin = Number((Math.random() * ((config.length - 1) - 0) + 0).toFixed());
+  console.log(sorteioLogin);
   const browser = await puppeteer.launch({
     executablePath: 'C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe',
     headless: false
@@ -46,8 +46,10 @@ async function automatiza() {
   await page.goto(site);
   // Inserindo valores na página
   await page.waitForSelector('#email');
-  await page.type('#email', config.login, {delay: 0});
-  await page.type('#pass', config.password, {delay: 0});
+  await page.type('#email', config[sorteioLogin].login, {delay: 0});
+  console.log(config[sorteioLogin].login);
+  await page.type('#pass', config[sorteioLogin].password, {delay: 0});
+  console.log(config[sorteioLogin].password);
   await page.keyboard.press('Enter');
   await page.waitForNavigation();
 
@@ -75,10 +77,10 @@ async function automatiza() {
   //   "Não vai chegar, talvez chegue hoje",
   // ]
 
-  while (cont <= 20){
+  while (cont <= 10){
 
-    var number = Number((Math.random() * mensagem.length - 1).toFixed());
-    var variationTimes = Number((Math.random() * (200 - 100) + 100).toFixed());
+    var number = Number((Math.random() * ((mensagem.length - 1) - 0) + 0).toFixed());
+    var variationTimes = Number((Math.random() * (90 - 60) + 60).toFixed());
 
     console.log(number);
     console.log(mensagem[number]);
@@ -94,13 +96,15 @@ async function automatiza() {
   setTimeout(async () => {
     await browser.close();
     automatiza();
-  }, 1000 * 30)
+  }, 5000)
   
   // Fecha o navegador
   //await browser.close();
 
   } catch(error) {
-    console.error(error)
+    console.error(error);
+    await browser.close();
+    automatiza();
   }
 };
 
