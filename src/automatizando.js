@@ -1,6 +1,7 @@
 const puppeteer = require('puppeteer');
 const fetch = require('node-fetch');
 const config = require('./config');
+const postAlvo = require('./alvo');
 
 // Realizando uma consulta na api type.fir
 (async () => {
@@ -39,7 +40,7 @@ const config = require('./config');
   })
   // Os sites que o navegador deve abrir
   const site = "https://www.facebook.com/";
-  const alvo = "https://www.facebook.com/photo.php?fbid=3276575145763796&set=a.343775012377172&type=3&theater";
+  const alvo = postAlvo;
   
   // Abrindo a primeira pagina
   await page.goto(site);
