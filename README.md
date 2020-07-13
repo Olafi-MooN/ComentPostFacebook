@@ -28,7 +28,7 @@ module.exports = [
 ]
 ```
 
-## executando o projeto
+## Executando o projeto
 ### Abra o terminal e navegue ate o diretório do projeto
 
 ```
